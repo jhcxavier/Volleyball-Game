@@ -1,3 +1,5 @@
+from termcolor import colored
+
 print("Volleyball Project\nJoão H Carneiro Xavier\n\n")
 
 integer_values_only = 'Input error: please enter integer values only.'
@@ -64,5 +66,6 @@ for i in range(0, 5):
         team_winner_2 += 1
     print("{:>5d}{:>10d}{:>10d}{:>10s}".format(i + 1, team_1[i], team_2[i], winner))
 
-print("\nThe winner of the match is Team 1") if team_winner_1 > team_winner_2 else print("\nThe winner of the match "
-                                                                                         "is Team 2")
+print(colored("\nThe winner of the match is Team 1", "green")) if team_winner_1 > team_winner_2 else print(
+    colored("\nThe winner of the match "
+            "is Team 2"))

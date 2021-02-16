@@ -20,14 +20,32 @@ team_2 = []
 
 game_changer = False
 
+
+def set_int(x):
+    try:
+        return int(x)
+    except ValueError:
+        return False
+
+
 for i in range(1, 6):
     game_changer = False
     score_1 = ""
+
     while not game_changer:
+        # score_1 = input(f'Enter score that Team 1 got in the game {i}: ')
+
+        # if not set_int(score_1):
+        #     print(integer_values_only)
+        #     continue
         score_1 = eval(input(f'Enter score that Team 1 got in the game {i}: '))
         if isinstance(score_1, float):
             print(integer_values_only)
             continue
+        # score_2 = input(f'Enter score that Team 2 got in the game {i}: ')
+        # if not set_int(score_2):
+        #     print(integer_values_only)
+        #     continue
         score_2 = eval(input(f'Enter score that Team 2 got in the game {i}: '))
         if isinstance(score_2, float):
             print(integer_values_only)
@@ -63,8 +81,5 @@ for i in range(0, 5):
         team_winner_2 += 1
     print("{:>5d}{:>10d}{:>10d}{:>10s}".format(i + 1, team_1[i], team_2[i], winner))
 
-
 print("\nThe winner of the match is Team 1") if team_winner_1 > team_winner_2 else print("\nThe winner of the match "
                                                                                          "is Team 2")
-
-
