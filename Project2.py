@@ -1,13 +1,3 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-# def print_hi(name):
-# Use a breakpoint in the code line below to debug your script.
-# print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
 print("Volleyball Project\nJoão H Carneiro Xavier\n\n")
 
 integer_values_only = 'Input error: please enter integer values only.'
@@ -21,16 +11,27 @@ team_2 = []
 game_changer = False
 
 for i in range(1, 6):
+
     game_changer = False
     score_1 = ""
     while not game_changer:
-        score_1 = eval(input(f'Enter score that Team 1 got in the game {i}: '))
-        if isinstance(score_1, float):
-            print(integer_values_only)
+
+        def get_int(prompt):
+            while True:
+                try:
+                    answer = int(input(prompt))
+                    break
+                except ValueError:
+                    print(integer_values_only)
+                    return False
+            return answer
+
+        score_1 = get_int(f'Enter score that Team 1 got in the game {i}: ')
+        if not score_1:
             continue
-        score_2 = eval(input(f'Enter score that Team 2 got in the game {i}: '))
-        if isinstance(score_2, float):
-            print(integer_values_only)
+
+        score_2 = get_int(f'Enter score that Team 2 got in the game {i}: ')
+        if not score_2:
             continue
         result_1 = score_1 - score_2
         result_2 = score_2 - score_1
@@ -63,8 +64,5 @@ for i in range(0, 5):
         team_winner_2 += 1
     print("{:>5d}{:>10d}{:>10d}{:>10s}".format(i + 1, team_1[i], team_2[i], winner))
 
-
 print("\nThe winner of the match is Team 1") if team_winner_1 > team_winner_2 else print("\nThe winner of the match "
                                                                                          "is Team 2")
-
-
