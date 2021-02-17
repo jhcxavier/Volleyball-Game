@@ -33,23 +33,22 @@ for i in range(1, 6):
     score_1 = ""
 
     while not game_changer:
-        # score_1 = input(f'Enter score that Team 1 got in the game {i}: ')
-
-        # if not set_int(score_1):
-        #     print(integer_values_only)
-        #     continue
-        score_1 = eval(input(f'Enter score that Team 1 got in the game {i}: '))
-        if isinstance(score_1, float):
+        score_1 = set_int(input(f'Enter score that Team 1 got in the game {i}: '))
+        if not set_int(score_1):
             print(integer_values_only)
             continue
-        # score_2 = input(f'Enter score that Team 2 got in the game {i}: ')
-        # if not set_int(score_2):
+        # score_1 = eval(input(f'Enter score that Team 1 got in the game {i}: '))
+        # if isinstance(score_1, float):
         #     print(integer_values_only)
         #     continue
-        score_2 = eval(input(f'Enter score that Team 2 got in the game {i}: '))
-        if isinstance(score_2, float):
+        score_2 = set_int(input(f'Enter score that Team 2 got in the game {i}: '))
+        if not set_int(score_2):
             print(integer_values_only)
             continue
+        # score_2 = eval(input(f'Enter score that Team 2 got in the game {i}: '))
+        # if isinstance(score_2, float):
+        #     print(integer_values_only)
+        #     continue
         result_1 = score_1 - score_2
         result_2 = score_2 - score_1
 
