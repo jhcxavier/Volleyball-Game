@@ -6,36 +6,35 @@ integer_values_only = 'Input error: please enter integer values only.'
 illegal_score_1 = "Illegal score, one team must score at least 15 points. Try again.\n"
 illegal_score_2 = "Illegal score, you have to win by 2 when scoring over 15 points. Try again.\n"
 win_by_2 = "Sorry, one team must win by at least 2 points. Try again.\n"
-team1_winner = "The winner of the match is Team 1"
-team2_winner = "The winner of the match is Team 2"
 
 team_1 = []
 team_2 = []
 
 game_changer = False
 
-
-def set_int(x):
-    try:
-        return int(x)
-    except ValueError:
-        return False
-
-
 for i in range(1, 6):
+
     game_changer = False
     score_1 = ""
-
     while not game_changer:
-        score_1 = set_int(input(f'Enter score that Team 1 got in the game {i}: '))
-        if not set_int(score_1):
-            print(integer_values_only)
-            continue
-        score_2 = set_int(input(f'Enter score that Team 2 got in the game {i}: '))
-        if not set_int(score_2):
-            print(integer_values_only)
+
+        def get_int(prompt):
+            while True:
+                try:
+                    answer = int(input(prompt))
+                    break
+                except ValueError:
+                    print(integer_values_only)
+                    return False
+            return answer
+
+        score_1 = get_int(f'Enter score that Team 1 got in the game {i}: ')
+        if not score_1:
             continue
 
+        score_2 = get_int(f'Enter score that Team 2 got in the game {i}: ')
+        if not score_2:
+            continue
         result_1 = score_1 - score_2
         result_2 = score_2 - score_1
 
@@ -67,5 +66,6 @@ for i in range(0, 5):
         team_winner_2 += 1
     print("{:>5d}{:>10d}{:>10d}{:>10s}".format(i + 1, team_1[i], team_2[i], winner))
 
-print(colored(f"\n{team1_winner}", "green")) if team_winner_1 > team_winner_2 else print(colored(f"\n {team2_winner}",
-                                                                                                 'green'))
+print(colored("\nThe winner of the match is Team 1", "green")) if team_winner_1 > team_winner_2 else print(
+    colored("\nThe winner of the match "
+            "is Team 2"))
